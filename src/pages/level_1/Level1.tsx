@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Level_1 = () => {
   const [id, setId] = useState<string>("");
   const [pw, setPw] = useState<string>("");
 
   const [cd, setCd] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const IdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (cd === "a") {
@@ -25,6 +28,7 @@ const Level_1 = () => {
       alert("id 또는 pw가 틀렸습니다");
     } else {
       alert("로그인 성공!");
+      navigate("/level2");
     }
   };
 
