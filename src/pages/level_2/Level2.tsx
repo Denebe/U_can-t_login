@@ -16,7 +16,6 @@ const Level_2 = () => {
   };
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setId(id.split("").reverse().join(""));
     if (id !== "abcd" || pw !== "1234") {
       console.log(id, pw);
       alert("id 또는 pw가 틀렸습니다");
@@ -50,6 +49,7 @@ const Level_2 = () => {
       <div className="flex mt-8 justify-center">
         <button
           onMouseOver={onOver}
+          onMouseOut={onOver}
           onClick={onClick}
           className="bg-green-300 w-1/2 h-10"
         >
