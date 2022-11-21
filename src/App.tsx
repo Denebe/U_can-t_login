@@ -7,16 +7,16 @@ const App = () => {
   const [cd, setCd] = useState<string>("");
 
   const IdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+
     if (cd === "a") {
-      console.log(e.target.value);
-      setId("b");
+      setId(id + "a");
     } else if (cd === "q") {
-      setId("a");
+      setId(id + "q");
     } else {
       setId(e.target.value);
     }
   };
-  console.log(String.fromCharCode(65));
   const PwChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPw(e.target.value);
   };
@@ -31,7 +31,13 @@ const App = () => {
   };
 
   const idPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    //setCd(e.which);
+    if (e.key === "a") {
+      setCd("q");
+    } else if (e.key === "q") {
+      setCd("a");
+    } else {
+      setCd("e");
+    }
   };
 
   return (
@@ -42,8 +48,8 @@ const App = () => {
       <div className="flex mt-8 justify-center">
         <input
           className="border-4"
-          onChange={IdChange}
           placeholder="id를 입력하세요"
+          onChange={IdChange}
           onKeyDown={idPress}
           value={id}
         />
