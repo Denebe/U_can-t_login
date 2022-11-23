@@ -45,30 +45,45 @@ const Level_1 = () => {
   return (
     <div className="w-full mt-4">
       <div className="flex justify-center">
-        <h1>ID: abcd, PW: 1234 ID와 PW는 항상 고정입니다. </h1>
+        <h1 className="text-center font-bold text-8xl">
+          U CAN'T <br /> LOGIN
+        </h1>
       </div>
       <div className="flex mt-8 justify-center">
         <input
-          className="border-4"
+          type="text"
+          className="text-center text-4xl border-solid rounded-2xl bg-gray-100"
           placeholder="id를 입력하세요"
           onChange={IdChange}
           onKeyDown={idPress}
+          maxLength={25}
           value={id}
         />
       </div>
       <div className="flex mt-8 justify-center">
         <input
           onChange={PwChange}
-          className="border-4"
+          className="text-center text-4xl border-solid rounded-2xl bg-gray-100"
           placeholder="pw를 입력하세요"
           value={pw}
+          maxLength={25}
         />
       </div>
 
       <div className="flex mt-8 justify-center">
-        <button onClick={onClick} className="bg-green-300 w-1/2">
+        <button
+          onClick={onClick}
+          className="text-center text-slate-100 w-96 h-14 border-solid rounded-2xl bg-black"
+        >
           로그인
         </button>
+      </div>
+
+      <div className="flex mt-8 justify-center">
+        <h1 className="text-center text-slate-900 w-96 h-14 ">U need Help?</h1>
+      </div>
+      <div className="flex justify-center">
+        <button className="text-center text-slate-900 w-96 h-14">?</button>
       </div>
     </div>
   );
