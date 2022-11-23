@@ -7,6 +7,8 @@ const Level_1 = () => {
 
   const [cd, setCd] = useState<string>("");
 
+  const area = document.getElementById("area1") as HTMLDivElement | null;
+
   const navigate = useNavigate();
 
   const IdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +25,11 @@ const Level_1 = () => {
   };
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (id !== "abcd" || pw !== "1234") {
-      console.log(id, pw);
+    if (id === "blue" || id === "red") {
+      if (area !== null) {
+        area.style.backgroundColor = id;
+      }
+    } else if (id !== "abcd" || pw !== "1234") {
       alert("id 또는 pw가 틀렸습니다");
     } else {
       alert("로그인 성공!");
@@ -43,7 +48,7 @@ const Level_1 = () => {
   };
 
   return (
-    <div className="w-full mt-4">
+    <div id="area1" className="m-auto w-full mt-4">
       <div className="flex justify-center">
         <h1 className="text-center font-bold text-8xl">
           U CAN'T <br /> LOGIN
