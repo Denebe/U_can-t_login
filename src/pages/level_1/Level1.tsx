@@ -6,6 +6,10 @@ const Level_1 = () => {
   const [id, setId] = useState<string>("");
   const [pw, setPw] = useState<string>("");
 
+  const [work, setWork] = useState<Boolean>(false);
+
+  const [test, setTest] = useState<Boolean>(false);
+
   const [cd, setCd] = useState<string>("");
 
   const area = document.getElementById("area1") as HTMLDivElement | null;
@@ -32,16 +36,20 @@ const Level_1 = () => {
   };
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setWork(true);
     if (id === "blue" || id === "red") {
       if (area !== null) {
         area.style.backgroundColor = id;
       }
     } else if (id !== "abcd" || pw !== "1234") {
-      alert("id 또는 pw가 틀렸습니다");
+      setTest(false);
     } else {
-      alert("로그인 성공!");
-      navigate("/level2");
+      setTest(true);
     }
+  };
+
+  const onNext = () => {
+    navigate("/level2");
   };
 
   const idPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -90,6 +98,30 @@ const Level_1 = () => {
           로그인
         </button>
       </div>
+
+      {work ? (
+        <div className="flex mt-8 justify-center">
+          {test ? (
+            <div>
+              <h1 className="text-center font-bold text-4xl text-blue-500">
+                Success
+              </h1>
+              <button
+                onClick={onNext}
+                className="flex mt-3 m-auto text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-blue-800"
+              >
+                다음 단계
+              </button>
+            </div>
+          ) : (
+            <h1 className="text-center font-bold text-4xl text-red-500">
+              Fail
+            </h1>
+          )}
+        </div>
+      ) : (
+        ""
+      )}
       {isOpenModal && (
         <Modal onClickToggleModal={onClickToggleModal}>
           ID : abcd <br />
